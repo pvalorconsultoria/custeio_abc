@@ -1,0 +1,47 @@
+---
+title: "Custeio ABC para Tomada de Decisões Gerenciais"
+date: 2022-01-05
+author: "Diego Rodrigues"
+output: 
+    html_document:
+        toc: true
+        theme: united
+        highlight: tango
+        css: style.css
+        df_print: kable
+        includes:
+            in_header: header2.html
+            after_body: footer.html
+runtime: shiny
+---
+
+
+```{r, echo=FALSE}
+
+if (!require("tidyverse")) install.packages("tidyverse")
+
+# Carrega Bibliotecas
+library(tidyr)
+library(dplyr)
+library(readr)
+library(readxl)
+library(stringr)
+library(lubridate)
+library(clipr)
+library(ggplot2)
+library(ggthemes)
+
+custos_diretos <- read_excel("Base de Dados.xlsx", sheet = 1)
+custos_departamentos <- read_excel("Base de Dados.xlsx", sheet = 2)
+rateio_atividade <- read_excel("Base de Dados.xlsx", sheet = 3)
+direcionadores <- read_excel("Base de Dados.xlsx", sheet = 4)
+```
+
+# Uha
+
+```{r}
+ggplot(custos_diretos, aes(x = Produto, y = Valor, fill = Custo)) + 
+  geom_col() 
+```
+
+
